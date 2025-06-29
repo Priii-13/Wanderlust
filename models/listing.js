@@ -7,8 +7,8 @@ const ListingSchema = new Schema({
   description: String,
 
   image: {
-    type: String,
-    
+    url: String,
+    filename:String
     
   },
 
@@ -20,8 +20,12 @@ const ListingSchema = new Schema({
      type:Schema.Types.ObjectId,
      ref:"Review"
     }
-  ]
-});
+  ],
+  owner:{
+    type:Schema.Types.ObjectId,
+    ref:"User"
+  }
+})
 
 ListingSchema.post("findOneAndDelete",async(listing)=>{
     if(listing){
